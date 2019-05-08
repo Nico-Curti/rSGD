@@ -135,10 +135,10 @@ long int * rSGD (const Patterns & pattern, const long int & K, parameters & para
   // check variables
 #ifdef DEBUG
   if (K < 1L || K % 2L == 0L)              error_Kpositive(K);
-  if (params.y < 1L)                       error_ypositive(y);
+  if (params.y < 1L)                       error_ypositive(params.y);
   if (batch < 1L)                          error_batchpositive(batch);
   if (formula > 3L)                        error_formula(formula);
-  if (params.lamdba == 0L && waitcenter)   warning_lamdba(params.lambda);
+  if (params.lambda == 0L && waitcenter)   warning_lamdba(params.lambda);
   if (init_equal && batch >= pattern.Nrow) warning_batch(batch, pattern.Nrow);
 #endif
 

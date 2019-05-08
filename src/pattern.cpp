@@ -131,7 +131,7 @@ void Patterns :: check_binary ()
   assert(Nout == Nrow);
   int cnt = 0;
   for (long int i = 0L; i < Nrow; ++i)
-    cnt += std :: count_if(input[i * Ncol], input[i * Ncol] + Ncol,
+    cnt += std :: count_if(input + i * Ncol, input + i * Ncol + Ncol,
                            [](const auto &v)
                            {
                             return std :: abs(v);
