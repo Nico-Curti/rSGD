@@ -84,6 +84,9 @@ matrix:
       addons:
         apt:
           update: true
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
           packages:
             - g++-7
             - clang-3.6
@@ -266,7 +269,6 @@ matrix:
   allow_failures:
     - name: ubuntu 14.04 - clang@3.6
     - name: ubuntu 14.04 - native gcc
-    - name: ubuntu 14.04 - gcc@4.9
     - name: macOS - clang@7.0
 
 
@@ -290,5 +292,6 @@ install:
 
 script:
   - chmod 777 ./build.sh
+  # pay attention to omp for gcc old version
   - if [[ "$TRAVIS_COMPILER" == "clang" ]]; then bash ./build.sh "" OFF                                                                       ;fi
-  - if [[ "$TRAVIS_COMPILER" == "gcc"   ]]; then bash ./build.sh "" ON                                                                        ;fi
+  - if [[ "$TRAVIS_COMPILER" == "gcc"   ]]; then bash ./build.sh "" OFF                                                                       ;fi
