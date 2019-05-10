@@ -281,6 +281,7 @@ matrix:
 
   allow_failures:
     - name: ubuntu 14.04 - native gcc # Bugs in gcc (internal compiler error: in gen_type_die_with_usage, at dwarf2out.c:19493)
+    - name: ubuntu 14.04 - gcc@4.8.5
     - name: macOS - clang@7.0
 
 

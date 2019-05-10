@@ -6,8 +6,10 @@
 #include <fstream>   // std::ifstream
 #include <iterator>  // std::ostream_iterator
 
+#ifndef __clang__
 #if __GNUC__ == 4 && __GNUC_MINOR__ < 9
 #include <utils.h>
+#endif
 #endif
 
 class NetNK
