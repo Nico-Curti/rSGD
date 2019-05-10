@@ -112,7 +112,7 @@ long int * NetNK :: read_weights (const std :: string & filename, long int & K, 
 
     weights = new long int [N * K];
 
-    std :: for_each (weights, weights + N * K, [&](auto && val){ is >> val; });
+    std :: for_each (weights, weights + N * K, [&](long int & val){ is >> val; });
   }
 
   is.close();
@@ -146,7 +146,7 @@ void NetNK :: init (std :: bernoulli_distribution & binary_dist, std :: mt19937 
 {
   std :: generate_n (H.get(), size, [&](){ return binary_dist(engine) ? 1. : -1.; });
   std :: fill_n (DeltaH.get(), size, 0.);
-  std :: transform (H.get(), H.get() + size, J.get(), [](auto && i){ return i > 0. ? 1L : 0L; });
+  std :: transform (H.get(), H.get() + size, J.get(), [](const double & i){ return i > 0. ? 1L : 0L; });
   std :: copy_n (J.get(), size, oldJ.get());
 }
 
@@ -180,3 +180,4 @@ NetNK NetNK :: mean (const NetNK * nets, const long int & n_nets, const long int
 
   return mean;
 }
+

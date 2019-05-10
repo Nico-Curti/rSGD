@@ -38,7 +38,7 @@ Patterns :: Patterns (const std :: string & filename, bool bin, const std :: str
 
     // Read outputs
     output = new long int [Nout];
-    std :: transform( row_.begin(), row_.end(), output, [](auto & i){return std :: stod(i);} );
+    std :: transform( row_.begin(), row_.end(), output, [](const std :: string & i){return std :: stod(i);} );
 
     // Get N
     std :: getline(buff, row);
@@ -47,14 +47,14 @@ Patterns :: Patterns (const std :: string & filename, bool bin, const std :: str
     input = new double[Nrow * Ncol];
 
     // Read first pattern
-    std :: transform( row_.begin(), row_.end(), input, [](auto & i){return std :: stod(i);} );
+    std :: transform( row_.begin(), row_.end(), input, [](const std :: string & i){return std :: stod(i);} );
 
     // Read all others
     for (long int i = Ncol; i < Nrow * Ncol; ++i)
     {
       std :: getline(buff, row);
       row_ = split(row, del);
-      std :: transform( row_.begin(), row_.end(), input + i * Ncol, [](auto & rr){return std :: stod(rr);} );
+      std :: transform( row_.begin(), row_.end(), input + i * Ncol, [](const std :: string & rr){return std :: stod(rr);} );
     }
 
   }
@@ -132,13 +132,13 @@ void Patterns :: check_binary ()
   int cnt = 0;
   for (long int i = 0L; i < Nrow; ++i)
     cnt += std :: count_if(input + i * Ncol, input + i * Ncol + Ncol,
-                           [](const auto &v)
+                           [](const double & v)
                            {
                             return std :: abs(v);
                            });
   assert(cnt == Nrow * Ncol);
   cnt = std :: accumulate(output, output + Nout,
-                          0, [](const int &res, const long int &v)
+                          0, [](const int & res, const long int & v)
                           {
                             return res + static_cast < int >(std :: abs(v));
                           });

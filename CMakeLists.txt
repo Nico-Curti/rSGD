@@ -16,7 +16,7 @@ add_definitions (-DMAJOR=${RSGD_MAJOR} -DMINOR=${RSGD_MINOR} -DREVISION=${RSGD_R
 #                         COMPILE OPTIONS                       #
 #################################################################
 
-option (OMP        "Enable OpenMP                support" ON)
+option (OMP        "Enable OpenMP                support" OFF)
 option (VERBOSE    "Enable verbose stdout        support" ON)
 option (PYrsgd     "Enable Python wrap compilation      " OFF)
 

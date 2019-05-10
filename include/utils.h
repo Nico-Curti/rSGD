@@ -50,6 +50,19 @@ static std :: unordered_map < std :: string, long int > _formulas_
 
 std :: vector < std :: string > split (const std :: string & txt, const std :: string & del);
 
+#if __GNUC__ == 4 && __GNUC_MINOR__ < 9
+namespace std
+{
+
+template < typename T >
+std :: unique_ptr < T > make_unique ( std :: size_t size )
+{
+  return std :: unique_ptr < T > ( new typename std :: remove_extent < T > :: type[size] () );
+}
+
+}
+#endif
+
 inline bool file_exists (const std :: string & filename)
 {
 //#if have_filesystem == 1

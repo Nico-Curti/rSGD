@@ -78,7 +78,7 @@ void subepoch (NetNK & net, const Patterns & p, PatternPermutation & patt_perm, 
         indh.push_back (i);
       }
 
-      std :: sort (indh.begin(), indh.end(), [&](auto && a, auto && b) { return wrongh[a] < wrongh[b]; });
+      std :: sort (indh.begin(), indh.end(), [&](const long int & a, const long int & b) { return wrongh[a] < wrongh[b]; });
 
       for (long int j = 0L; j < tofix; ++j)
         for (long int k = 0L; k < net.N; ++k)
@@ -175,8 +175,8 @@ long int * rSGD (const Patterns & pattern, const long int & K, parameters & para
   long int errc = compute_errs(netc, pattern);
 
   std :: iota (shuffle_idx.get(), shuffle_idx.get() + params.y, 0L);
-  std :: transform (nets.get(), nets.get() + params.y, errs.get(), [&](auto && n){ return compute_errs(n, pattern); });
-  std :: transform (nets.get(), nets.get() + params.y, dist.get(), [&](auto && n){ return netc - n; });
+  std :: transform (nets.get(), nets.get() + params.y, errs.get(), [&](NetNK & n){ return compute_errs(n, pattern); });
+  std :: transform (nets.get(), nets.get() + params.y, dist.get(), [&](NetNK & n){ return netc - n; });
   std :: generate_n (p_perm.get(), params.y, [&](){ return PatternPermutation(1L, M, batch); });
   std :: copy_n (errs.get(), params.y, min_errs.get());
 
