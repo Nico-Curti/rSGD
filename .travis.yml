@@ -13,6 +13,19 @@ matrix:
 
     - os: linux
       compiler: gcc
+      name: ubuntu 14.04 - gcc@4.8.5
+      addons:
+        apt:
+          update: true
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.8
+      env:
+        - MATRIX_EVAL="CC=gcc-4.8 && CXX=g++-4.8"
+
+    - os: linux
+      compiler: gcc
       name: ubuntu 14.04 - gcc@4.9
       addons:
         apt:
@@ -267,6 +280,7 @@ matrix:
         - LINKER_FLAGS="-stdlib=libc++ -lc++abi"
 
   allow_failures:
+    - name: ubuntu 14.04 - native gcc # Bugs in gcc (internal compiler error: in gen_type_die_with_usage, at dwarf2out.c:19493)
     - name: macOS - clang@7.0
 
 
