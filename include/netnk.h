@@ -5,6 +5,7 @@
 #include <algorithm> // std::copy_n
 #include <fstream>   // std::ifstream
 #include <iterator>  // std::ostream_iterator
+#include <numeric>   // std::accumulate
 
 #ifndef __clang__
 #if __GNUC__ == 4 && __GNUC_MINOR__ < 9

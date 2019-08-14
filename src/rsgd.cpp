@@ -184,6 +184,7 @@ long int * rSGD (const Patterns & pattern, const long int & K, parameters & para
   long int minerr = errc < m_errs ? errc : m_errs;
   long int mean_errs = std :: accumulate (errs.get(), errs.get() + params.y, 0L);
   long int mean_dist = std :: accumulate (dist.get(), dist.get() + params.y, 0L);
+  long int minerrc = 0L;
 
   if ( ! outfile.empty() )
   {
@@ -253,7 +254,7 @@ long int * rSGD (const Patterns & pattern, const long int & K, parameters & para
 
     ok = ( errc = compute_errs(netc, pattern) ) == 0L ? true : false;
 
-    long int minerrc = minerrc < errc ? minerrc : errc;
+    minerrc = minerrc < errc ? minerrc : errc;
 
 
     if ( ! outfile.empty() )
