@@ -42,7 +42,7 @@ int main (int argc, char *argv[])
   {
 #endif
 
-    predicted_labels = nonbayes_test(bin_weights, patterns, messages.K);
+    predicted_labels = predict(bin_weights, patterns, N);
 
 #ifdef _OPENMP
 #pragma omp sections
@@ -87,10 +87,6 @@ int main (int argc, char *argv[])
     std :: cout << patterns.output[i] << "\t" << temp_predict[i] << std :: endl;
 
 #endif
-
-  for (long int i = 0L; i < messages.K; ++i) delete[] bin_weights[i];
-  delete[] bin_weights;
-  delete[] predicted_labels;
 
   delete [] bin_weights;
   delete [] predicted_labels;
