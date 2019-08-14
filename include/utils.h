@@ -6,6 +6,7 @@
 #include <vector>
 #include <cmath>
 #include <random>
+#include <memory>
 //#if __has_include(<filesystem>)
 //#  include <filesystem>
 //#  define have_filesystem 1
@@ -49,8 +50,7 @@ static std :: unordered_map < std :: string, long int > _formulas_
 
 std :: vector < std :: string > split (const std :: string & txt, const std :: string & del);
 
-#ifndef __clang__
-#if __GNUC__ == 4 && __GNUC_MINOR__ < 9
+#if !defined __clang__ && __GNUC__ == 4 && __GNUC_MINOR__ < 9
 namespace std
 {
 
@@ -62,7 +62,7 @@ std :: unique_ptr < T > make_unique ( std :: size_t size )
 
 }
 #endif
-#endif
+
 
 inline bool file_exists (const std :: string & filename)
 {
