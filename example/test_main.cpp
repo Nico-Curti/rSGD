@@ -1,5 +1,8 @@
 #include <cmd.h>
 #include <rsgd.h>
+#if defined __clang__ || (!defined __clang__ && __GNUC__ > 4)
+#include <scorer.hpp>
+#endif
 
 int main (int argc, char *argv[])
 {

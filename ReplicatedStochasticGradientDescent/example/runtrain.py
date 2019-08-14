@@ -11,83 +11,83 @@ __author__  = ["Nico Curti (nico.curit2@unibo.it)", "Daniele Dall'Olio (daniele.
 def parse_args():
   description = "rSGD train example"
 
-  parser = argparse.ArgumentParser(description = description)
+  parser = argparse.ArgumentParser(description=description)
   parser.add_argument('--patterns',
                       dest='patterns',
-                      required = True,
+                      required=True,
                       type=str,
                       action='store',
-                      help = 'Pattern Filename' )
+                      help='Pattern Filename' )
   parser.add_argument('--output',
                       dest='output',
-                      required = False,
+                      required=False,
                       type=str,
                       action='store',
-                      help = 'Output filename',
+                      help='Output filename',
                       default='')
   parser.add_argument('--bin',
                       dest='bin',
-                      required = False,
+                      required=False,
                       type=bool,
                       action='store',
-                      help = 'File format: (0) Textfile(default), (1) Binary',
+                      help='File format: (0) Textfile(default), (1) Binary',
                       default=False,
                       choices=[0, 1])
   parser.add_argument('--delimiter',
                       dest='delimiter',
-                      required = False,
+                      required=False,
                       type=str,
                       action='store',
-                      help = 'Delimiter for text files(default: \"\\t\")',
+                      help='Delimiter for text files(default: \"\\t\")',
                       default='\t')
   parser.add_argument('--replica',
                       dest='replica',
-                      required = False,
+                      required=False,
                       type=int,
                       action='store',
-                      help = 'Number of replicas(default: 1)',
+                      help='Number of replicas(default: 1)',
                       default=1)
   parser.add_argument('--hidden',
                       dest='hidden',
-                      required = False,
+                      required=False,
                       type=int,
                       action='store',
-                      help = 'Number of Hidden Layers(default: 3)',
+                      help='Number of Hidden Layers(default: 3)',
                       default=3)
   parser.add_argument('--iteration',
                       dest='iteration',
-                      required = False,
+                      required=False,
                       type=int,
                       action='store',
-                      help = 'Max Number of iterations(default: 1000)',
+                      help='Max Number of iterations(default: 1000)',
                       default=1000)
   parser.add_argument('--seed',
                       dest='seed',
-                      required = False,
+                      required=False,
                       type=int,
                       action='store',
-                      help = 'Seed random generator(default: 135)',
+                      help='Seed random generator(default: 135)',
                       default=135)
   parser.add_argument('--eta',
                       dest='eta',
-                      required = False,
+                      required=False,
                       type=float,
                       action='store',
-                      help = 'Initial value of the step for the energy (loss) term gradient(default: 2.)',
+                      help='Initial value of the step for the energy (loss) term gradient(default: 2.)',
                       default=2.)
   parser.add_argument('--lambda',
                       dest='lamda',
-                      required = False,
+                      required=False,
                       type=float,
                       action='store',
-                      help = 'Initial value of the step for the interaction gradient(default: .1)',
+                      help='Initial value of the step for the interaction gradient(default: .1)',
                       default=.1)
   parser.add_argument('--gamma',
                       dest='gamma',
-                      required = False,
+                      required=False,
                       type=float,
                       action='store',
-                      help = 'Initial value of the interaction strength(default: inf)',
+                      help='Initial value of the interaction strength(default: inf)',
                       default=float('Inf'))
   parser.add_argument('--factor',
                       dest='factor',
@@ -99,39 +99,39 @@ def parse_args():
                       default=[1., 1., .01])
   parser.add_argument('--formula',
                       dest='formula',
-                      required = False,
+                      required=False,
                       type=str,
                       action='store',
-                      help = 'Iteration update scheme',
+                      help='Iteration update scheme',
                       default='simple',
                       choices=['simple', 'hard', 'corrected', 'continuous'])
   parser.add_argument('--waitcenter',
                       dest='waitcenter',
-                      required = False,
+                      required=False,
                       type=bool,
                       action='store',
-                      help = 'Whether to only exit successfully if the center replica has solved the problem',
+                      help='Whether to only exit successfully if the center replica has solved the problem',
                       default=False)
   parser.add_argument('--equal',
                       dest='equal',
-                      required = False,
+                      required=False,
                       type=bool,
                       action='store',
-                      help = 'Whether to initialize all replicated networks equally',
+                      help='Whether to initialize all replicated networks equally',
                       default=False)
   parser.add_argument('--center',
                       dest='center',
-                      required = False,
+                      required=False,
                       type=bool,
                       action='store',
-                      help = 'Whether to explicity use a central replica (if "false", it is traced out)',
+                      help='Whether to explicity use a central replica (if "false", it is traced out)',
                       default=False)
   parser.add_argument('--nth',
                       dest='nth',
-                      required = False,
+                      required=False,
                       type=int,
                       action='store',
-                      help = 'Number of thread to use',
+                      help='Number of thread to use',
                       default=NTH)
 
   args = parser.parse_args()
@@ -140,6 +140,7 @@ def parse_args():
 
 
 def train():
+
   args = parse_args()
 
   pattern = Pattern()
@@ -147,11 +148,11 @@ def train():
 
   rsgd = rSGD(args.K, args.formula, args.max_iter, args.seed, args.equal, args.waitcenter, args.center)
 
-  rfbp.fit(pattern, parameters = {'y' : args.replica,
-                                  'eta' : (args.eta, args.factor[0]),
-                                  'lambda' : (args.lamda, args.factor[1]),
-                                  'gamma' : (args.gamma, args.factor[2])
-                                  })
+  rfbp.fit(pattern, parameters={'y' : args.replica,
+                                'eta' : (args.eta, args.factor[0]),
+                                'lambda' : (args.lamda, args.factor[1]),
+                                'gamma' : (args.gamma, args.factor[2])
+                                })
 
   rfbp.save_weights(args.output, args.bin)
 

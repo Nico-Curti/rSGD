@@ -1,11 +1,22 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
 
 import os
 import warnings
-from ReplicatedStochasticGradientDescent.source.ReplicatedStochasticGradientDescent import ReplicatedStochasticGradientDescent, NTH
-from ReplicatedStochasticGradientDescent.source.Patterns import Pattern
+
+try:
+
+  from .rsgd.ReplicatedStochasticGradientDescent import ReplicatedStochasticGradientDescent
+  from .rsgd.ReplicatedStochasticGradientDescent import NTH
+  from .rsgd.Patterns import Pattern
+
+except ImportError:
+  pass
 
 __all__ = ["ReplicatedStochasticGradientDescent"]
 
 __package__ = "rSGD"
-__author__  = ["Nico Curti (nico.curit2@unibo.it)", "Daniele Dall'Olio (daniele.dallolio@studio.unibo.it)"]
+__author__  = ["Nico Curti", "Daniele Dall'Olio"]
+__email__   = ['nico.curti2@unibo.it', 'daniele.dallolio@studio.unibo.it']

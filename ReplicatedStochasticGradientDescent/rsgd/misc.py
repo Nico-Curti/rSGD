@@ -1,11 +1,19 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from __future__ import print_function
+from __future__ import division
+
 import os
 import sys
 
+__package__ = "rSGD miscellaneous"
+__author__  = ["Nico Curti", "Daniele Dall'Olio"]
+__email__   = ['nico.curti2@unibo.it', 'daniele.dallolio@studio.unibo.it']
+
 # https://stackoverflow.com/questions/14197009/how-can-i-redirect-print-output-of-a-function-in-python
 try:
+
   import contextlib
 
   @contextlib.contextmanager
@@ -21,7 +29,9 @@ try:
       func()
 
 except:
+
   import StringIO
+
   def stdout_redirect(where, func):
     stdout = sys.stdout
     sys.stdout = StringIO.StringIO()

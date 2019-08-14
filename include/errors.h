@@ -2,6 +2,7 @@
 #define __errors__
 
 #include <iostream>
+#include <string>
 
 static constexpr int ERROR_KPOSITIVE        = 10;
 static constexpr int ERROR_YPOSITIVE        = 11;

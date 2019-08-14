@@ -3,6 +3,7 @@
 #include <vector>
 #include <iterator>
 #include <functional>
+#include <iomanip>
 
 #include <netnk.h>
 #include <kick.h>

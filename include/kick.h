@@ -4,7 +4,9 @@
 #include <parameters.h>
 #include <utils.h>
 #ifdef DEBUG
+
 #include <cassert>
+
 #endif
 
 namespace kick

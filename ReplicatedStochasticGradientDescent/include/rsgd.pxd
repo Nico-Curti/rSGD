@@ -1,7 +1,7 @@
 # distutils: language = c++
 # cython: language_level=2
 
-from libcpp.string cimport string
+#from libcpp.string cimport string
 from pattern cimport Patterns
 from params cimport parameters
 from libcpp cimport bool

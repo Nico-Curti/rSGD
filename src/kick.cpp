@@ -30,7 +30,11 @@ double compute_kick (const long int & kick, const double & x)
 
 void kickboth (NetNK & n1, NetNK & n2, const parameters & p)
 {
+#ifdef DEBUG
+
   assert (n1 == n2);
+
+#endif
 
   for (long int i = 0L; i < n1.size; ++i)
   {
@@ -46,7 +50,11 @@ void kickboth (NetNK & n1, NetNK & n2, const parameters & p)
 
 void kickboth_traced (NetNK & n1, NetNK & n2, const parameters & p, const long int & kick)
 {
+#ifdef DEBUG
+
   assert (n1 == n2);
+
+#endif
 
   double factor = p.gamma * p.y;
   double correction = kick == _corrected ? kick :: tanh (factor) : 1.;
@@ -65,7 +73,11 @@ void kickboth_traced (NetNK & n1, NetNK & n2, const parameters & p, const long i
 
 void kickboth_traced_continuous (NetNK & n1, NetNK & n2, const parameters & p)
 {
+#ifdef DEBUG
+
   assert (n1 == n2);
+
+#endif
 
   for (long int i = 0L; i < n1.size; ++i)
   {

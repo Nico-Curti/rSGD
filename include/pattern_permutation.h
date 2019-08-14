@@ -3,6 +3,8 @@
 #include <memory>
 #include <numeric>
 #include <cmath>
+#include <random>
+#include <algorithm>
 #include <utils.h>
 
 class PatternPermutation

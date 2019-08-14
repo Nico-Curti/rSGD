@@ -6,7 +6,6 @@
 #include <vector>
 #include <cmath>
 #include <random>
-#include <scorer.h>
 //#if __has_include(<filesystem>)
 //#  include <filesystem>
 //#  define have_filesystem 1
@@ -27,8 +26,8 @@
 #define DLLSPEC
 #endif
 
-//static constexpr double inf         = std :: numeric_limits < double > :: infinity();
-static constexpr double epsilon     = std :: numeric_limits < double > :: epsilon();
+static constexpr double infinity = std :: numeric_limits < double > :: infinity();
+static constexpr double epsilon  = std :: numeric_limits < double > :: epsilon();
 
 enum {
   _simple = 0L,

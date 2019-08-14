@@ -52,7 +52,7 @@ void parse_training_rsgd( int argc, char *argv[],
   argparse.add_argument < long int >(     "rArg",  "r",  "seed",        "Seed random generator(default: 135)",                                              false, 135L);
   argparse.add_argument < double >(       "eArg",  "e",  "eta",         "Initial value of the step for the energy (loss) term gradient",                    false, 2.);
   argparse.add_argument < double >(       "lArg",  "l",  "lambda",      "Initial value of the step for the interaction gradient",                           false, .1);
-  argparse.add_argument < double >(       "gArg",  "g",  "gamma",       "Initial value of the interaction strength",                                        false, inf);
+  argparse.add_argument < double >(       "gArg",  "g",  "gamma",       "Initial value of the interaction strength",                                        false, infinity);
   argparse.add_argument < double >(       "xArg",  "x",  "factor",      "Factors used to update 'eta', 'lambda' and 'gamma' respectively after each epoch", false);
   argparse.add_argument < std :: string >("zArg",  "z",  "formula",     "Choose Iteration Update Scheme: "
                                                                         "'simple', 'hard', 'corrected', 'continuous'",                                      false, "simple");

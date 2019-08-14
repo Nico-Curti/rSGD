@@ -1,0 +1,11 @@
+setup.py
+ReplicatedStochasticGradientDescent/__init__.py
+ReplicatedStochasticGradientDescent/__version__.py
+ReplicatedStochasticGradientDescent/include/params.pxd
+ReplicatedStochasticGradientDescent/include/pattern.pxd
+ReplicatedStochasticGradientDescent/include/rsgd.pxd
+ReplicatedStochasticGradientDescent/rsgd/__init__.py
+ReplicatedStochasticGradientDescent/rsgd/misc.py
+ReplicatedStochasticGradientDescent/rsgd/Patterns.py
+ReplicatedStochasticGradientDescent/rsgd/ReplicatedStochasticGradientDescent.py
+ReplicatedStochasticGradientDescent/source/rSGD.pyx
