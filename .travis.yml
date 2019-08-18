@@ -177,6 +177,7 @@ matrix:
     - os: linux
       compiler: clang
       name: ubuntu 14.04 - clang@5.0
+      dist: xenial
       addons:
         apt:
           update: true
@@ -195,6 +196,7 @@ matrix:
     - os: linux
       compiler: clang
       name: ubuntu 14.04 - clang@6.0
+      dist: xenial
       addons:
         apt:
           update: true
@@ -214,6 +216,7 @@ matrix:
     - os: linux
       compiler: clang
       name: ubuntu 14.04 - clang@7.0
+      dist: xenial
       addons:
         apt:
           update: true
