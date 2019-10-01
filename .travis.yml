@@ -115,7 +115,6 @@ matrix:
     - os: linux
       compiler: clang
       name: ubuntu 14.04 - clang@3.8
-      dist: trusty
       addons:
         apt:
           update: true
@@ -123,10 +122,10 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - clang-3.8
-            - g++-4.8-aarch64-linux-gnu
-            - gcc-4.8-aarch64-linux-gnu
-            - g++-4.8-multilib
-            - gcc-4.8-multilib
+            - libstdc++-4.8-dev
+            - libclang-3.8-dev
+            - libc++-dev
+            - libc++abi-dev
       env:
         - MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
         - LINKER_FLAGS="-stdlib=libc++ -lc++abi"
@@ -135,7 +134,6 @@ matrix:
     - os: linux
       compiler: clang
       name: ubuntu 14.04 - clang@3.9
-      dist: trusty
       addons:
         apt:
           update: true
@@ -143,10 +141,10 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - clang-3.9
-            - g++-4.8-aarch64-linux-gnu
-            - gcc-4.8-aarch64-linux-gnu
-            - g++-4.8-multilib
-            - gcc-4.8-multilib
+            - libstdc++-4.8-dev
+            - libclang-3.9-dev
+            - libc++-dev
+            - libc++abi-dev
       env:
         - MATRIX_EVAL="CC=clang-3.9 && CXX=clang++-3.9"
         - LINKER_FLAGS="-stdlib=libc++ -lc++abi"
@@ -278,8 +276,6 @@ matrix:
         - LINKER_FLAGS="-stdlib=libc++ -lc++abi"
 
   allow_failures:
-    - name: ubuntu 14.04 - clang@5.0
-    - name: ubuntu 14.04 - clang@6.0
     - name: macOS - clang@7.0
 
 
